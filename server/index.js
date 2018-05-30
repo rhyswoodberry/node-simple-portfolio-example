@@ -18,10 +18,17 @@ app.use('/', express.static('../client'))
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
 
 app.post('/contact', (req, res) => {
-  res.send(`Submitted! 
-  <br>
-  Name: ${req.body.name}<br>
-  Email: ${req.body.email}<br>
-  Email: ${req.body.email}<br>
-  Message: ${req.body.message}<br>`)
+  // res.send(`Submitted! 
+  // <br>
+  // Name: ${req.body.name}<br>
+  // Email: ${req.body.email}<br>
+  // Email: ${req.body.email}<br>
+  // Message: ${req.body.message}<br>`)
+
+  const enquiry = new Enquiry({
+    name: req.body.name,
+    email: req.body.email,
+    phone: req.body.phone,
+    message: req.body.message
+  })
 })
