@@ -1,8 +1,16 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-
 app.use(bodyParser.urlencoded({ extended: false }))
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/contact_form')
+
+const Enquiry = mongoose.model('Enquiry', {
+  name: String,
+  email: String,
+  phone: String,
+  message: String
+})
 
 // app.get('/', (req, res) => res.send('Bonjour Le Monde!'))
 app.use('/', express.static('../client'))
