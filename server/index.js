@@ -31,4 +31,10 @@ app.post('/contact', (req, res) => {
     phone: req.body.phone,
     message: req.body.message
   })
+
+  enquiry.save().then(() => {
+    res.send('Thanks. Submitted!')
+  }).catch((err) => {
+    res.send(`Something went wrong :( ${err}`)
+  })
 })
